@@ -1,0 +1,5 @@
+{
+    "modelPath": "./src/data/captcha/models/best.onnx",
+    "captchaSavePath": "./src/data/captcha/trainingData",
+    "saveCaptcha": true
+}

@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-09-26T06:40:44.184Z",
+  "sourceKind": "existing-unified",
+  "schemaVersion": 10,
+  "counts": {
+    "accountsData": 22,
+    "botData": 6,
+    "tasksData": 6,
+    "itemsData": 1,
+    "serverData": 1,
+    "resellerSettings": 35,
+    "legacyImportRecords": 51
+  },
+  "integrity": "ok",
+  "foreignKeyErrors": [],
+  "issues": [
+    {
+      "entity": "bot:3",
+      "message": "Duplicate account 8 detached; assign a different account. Original record preserved."
+    },
+    {
+      "entity": "account:6",
+      "message": "Legacy task preserved as an unassigned task"
+    }
+  ],
+  "bots": [
+    {
+      "botId": 1,
+      "connectedAccountId": 14,
+      "serverId": 1,
+      "realm": 219
+    },
+    {
+      "botId": 2,
+      "connectedAccountId": 9,
+      "serverId": 1,
+      "realm": 220
+    },
+    {
+      "botId": 3,
+      "connectedAccountId": 10,
+      "serverId": 1,
+      "realm": 219
+    },
+    {
+      "botId": 4,
+      "connectedAccountId": 11,
+      "serverId": 1,
+      "realm": 220
+    },
+    {
+      "botId": 5,
+      "connectedAccountId": 12,
+      "serverId": 1,
+      "realm": 220
+    },
+    {
+      "botId": 6,
+      "connectedAccountId": 15,
+      "serverId": 1,
+      "realm": 218
+    }
+  ],
+  "tasks": [
+    {
+      "taskId": 1,
+      "botId": 1,
+      "type": "reseller"
+    },
+    {
+      "taskId": 2,
+      "botId": 2,
+      "type": "reseller"
+    },
+    {
+      "taskId": 3,
+      "botId": 3,
+      "type": "reseller"
+    },
+    {
+      "taskId": 4,
+      "botId": 4,
+      "type": "reseller"
+    },
+    {
+      "taskId": 5,
+      "botId": 5,
+      "type": "reseller"
+    },
+    {
+      "taskId": 6,
+      "botId": 6,
+      "type": "analyst"
+    }
+  ]
+}

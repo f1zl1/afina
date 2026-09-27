@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afina</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>Afina</h1>
+            <span class="subtitle">Bot Control</span>
+        </div>
+
+        <nav class="page-tabs" aria-label="Розділи">
+            <button id="botsPageTab" class="active" type="button" aria-pressed="true">Боти</button>
+            <button id="databasePageTab" type="button" aria-pressed="false">База даних</button>
+            <button id="corePageTab" type="button" aria-pressed="false">Ядро</button>
+        </nav>
+        <div class="connection">
+            <span id="connectionDot" class="connection-dot"></span>
+            <span id="connectionText">Connecting</span>
+        </div>
+    </header>
+
+    <main id="botsPage" class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div>
+                    <h2>Bots</h2>
+                    <span id="botsCount">0</span>
+                </div>
+
+                <button id="addBotButton" class="small-button">+</button>
+            </div>
+
+            <div id="botList" class="bot-list"></div>
+        </aside>
+
+        <section class="content">
+            <div id="emptyState" class="empty-state">
+                Select a bot
+            </div>
+
+            <div id="botContent" class="bot-content hidden">
+                <div class="bot-header">
+                    <div>
+                        <h2 id="botTitle">Bot</h2>
+                        <div id="botAccount" class="muted"></div>
+                    </div>
+
+                    <div class="actions">
+                        <button id="startButton">Start</button>
+                        <button id="stopButton">Stop</button>
+                        <button id="restartButton">Restart</button>
+                        <button id="deleteButton" class="danger-button">Delete</button>
+                    </div>
+                </div>
+
+                <div class="cards">
+                    <div class="card">
+                        <span class="card-label">Supervisor</span>
+                        <strong id="supervisorStatus">-</strong>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-label">Runtime</span>
+                        <strong id="runtimeStatus">-</strong>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-label">Position</span>
+                        <strong id="position">-</strong>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-label">Balance</span>
+                        <strong id="balance">-</strong>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-label">Task</span>
+                        <strong id="taskType">-</strong>
+                    </div>
+
+                    <div class="card">
+                        <span class="card-label">Task state</span>
+                        <strong id="taskState">-</strong>
+                    </div>
+                </div>
+
+                <div id="configurationNotice" class="configuration-notice hidden" role="status"></div>
+
+                <div class="stream">
+                    <div class="tabs">
+                        <button id="chatTab" class="tab active">Chat</button>
+                        <button id="eventsTab" class="tab">Events</button>
+                    </div>
+
+                    <div id="chatPanel" class="stream-panel"></div>
+                    <div id="eventsPanel" class="stream-panel hidden"></div>
+                    <div id="chatFeedback" class="chat-feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+                    <form id="chatForm" class="chat-form">
+                        <div class="chat-compose">
+                            <input id="chatInput" type="text" maxlength="256" autocomplete="off"
+                                placeholder="Повідомлення, /команда сервера або !help"
+                                aria-label="Повідомлення або команда" required>
+                            <button id="chatSendButton" class="chat-send" type="submit" aria-label="Надіслати" title="Надіслати" disabled>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="m22 2-7 20-4-9-9-4 20-7Z"/>
+                                    <path d="M22 2 11 13"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="corePage" class="core-page hidden" aria-label="Автономне ядро">
+        <div class="core-heading"><div><span class="core-eyebrow">CORE FOUNDATION · V1</span><h2>Ядро</h2><p class="muted">Цілі, обмеження та пояснення рішень системи.</p></div><button id="coreRefresh" type="button">Оновити</button></div>
+        <div id="coreMessage" class="database-message" role="status"></div>
+        <div id="coreOverview" class="core-overview" aria-live="polite"></div>
+        <section class="core-panel"><h3>Поточна оцінка</h3><div id="coreActivity" class="muted"></div><ul id="coreAssessment"></ul></section>
+        <section class="core-panel operations-panel"><div class="operations-heading"><div><span class="core-eyebrow">АВТОМАТИЗАЦІЯ</span><h3>Операційне керування</h3></div><span id="coreOperationsRevision" class="muted"></span></div><p id="coreOperationsSummary" class="muted" aria-live="polite"></p><section id="coreAutomationDiagnostic" class="automation-diagnostic" aria-label="Стан автоматизації"></section><form id="coreOperationsForm"><div id="coreOperationsFields"></div><div id="coreOperationsValidation" class="operations-validation" role="alert"></div><div id="coreOperationsImpact" class="operations-impact hidden" role="status"></div><div class="operations-savebar"><span id="coreOperationsDirty" class="muted"></span><button id="coreOperationsCancel" type="button" disabled>Скасувати зміни</button><button id="coreOperationsSave" type="submit" disabled>Зберегти налаштування</button></div></form></section>
+        <div class="core-columns">
+            <section class="core-panel"><h3>Політика</h3><form id="corePolicyForm"><div id="corePolicyFields" class="core-fields"></div><button id="corePolicySave" type="submit">Зберегти політику</button></form></section>
+            <section class="core-panel"><h3>Override товару</h3><form id="coreOverrideForm"><label>Товар<select id="coreOverrideItem" required></select></label><div id="coreOverrideFields" class="core-fields"></div><div class="actions"><button id="coreOverrideSave" type="submit">Зберегти override</button><button id="coreOverrideDelete" type="button">Видалити override</button></div></form><div id="coreOverrides" class="core-scroll"></div></section>
+        </div>
+        <section class="core-panel"><h3>Desired / Actual</h3><div id="coreAllocations" class="core-scroll"></div><div id="coreManualHolds"></div></section>
+        <section class="core-panel" aria-label="Market Intelligence">
+            <h3>Trading Intelligence</h3><p id="coreTradingExecutionStatus"></p>
+            <p class="muted">Увімкнення автономної торгівлі дозволяє реальні купівлі та виставлення за планами. Ліміти ризику налаштовуються в операційній політиці.</p>
+            <div id="coreTradingRows" class="core-scroll"></div>
+            <section id="coreLiveValidation"></section>
+            <h3>Market Intelligence</h3><p id="coreMarketStatus" class="muted"></p>
+            <div id="coreMarketRows" class="core-scroll"></div>
+            <label>Деталі ринку<select id="coreMarketItem"></select></label>
+            <div id="coreMarketDetails" class="core-scroll"></div>
+            <details id="coreMarketDiagnostics"><summary>Класифікація останніх лотів</summary><div id="coreMarketLots" class="core-scroll"></div></details>
+        </section>
+        <section class="core-panel"><h3>Analyst · наживо</h3><div id="coreAnalysts" class="core-scroll"></div></section>
+        <section class="core-panel"><h3>Пріоритети аналізу</h3><div id="coreAnalysisPriorities" class="core-scroll"></div></section>
+        <section class="core-panel"><h3>Рішення ядра</h3><p class="muted">Причини формує Core. Останні 50 рішень, без технічних логів.</p><div id="coreDecisions" class="core-decisions"></div></section>
+    </section>
+
+    <section id="databasePage" class="database-page hidden" aria-label="Редактор бази даних">
+        <aside class="database-sidebar">
+            <h2>База даних</h2>
+            <p class="muted">Таблиці проєкту</p>
+            <div id="databaseTables"></div>
+        </aside>
+        <div class="database-content">
+            <div class="database-heading">
+                <div><h2 id="databaseTitle">Оберіть таблицю</h2><p id="databaseSummary" class="muted"></p></div>
+                <div class="actions"><button id="databaseRefresh" type="button">Оновити</button><button id="databaseAdd" type="button">+ Запис</button></div>
+            </div>
+            <div class="database-toolbar">
+                <input id="databaseSearch" type="search" placeholder="Пошук у таблиці…" aria-label="Пошук у таблиці">
+                <span class="muted">Оновлення кожні 3 с</span>
+            </div>
+            <form id="generateAccountsForm" class="account-generator hidden">
+                <label for="generateAccountsCount">Нові акаунти</label>
+                <input id="generateAccountsCount" type="number" min="1" max="100" value="1" required aria-label="Кількість нових акаунтів">
+                <button id="generateAccountsButton" type="submit">Згенерувати</button>
+                <span class="muted">Нік, пароль і готовий запис у пулі</span>
+            </form>
+            <div id="databaseMessage" class="database-message" role="status"></div>
+            <p id="databaseTableHelp" class="muted"></p>
+            <div class="database-table-wrap"><table class="database-table"><thead id="databaseHead"></thead><tbody id="databaseRows"></tbody></table></div>
+            <div class="database-pagination"><button id="databasePrevious" type="button">← Назад</button><span id="databasePageInfo"></span><button id="databaseNext" type="button">Далі →</button></div>
+        </div>
+    </section>
+
+    <dialog id="telegramAuthDialog" class="dialog">
+        <form id="telegramAuthForm">
+            <h2>Telegram-акаунт</h2>
+            <p id="telegramAuthHint" class="muted"></p>
+            <label><span id="telegramAuthLabel"></span><input id="telegramAuthValue" required autocomplete="off"></label>
+            <div id="telegramAuthError" class="database-message error" role="alert"></div>
+            <div class="actions"><button id="telegramAuthCancel" type="button">Скасувати</button><button id="telegramAuthSubmit" type="submit">Отримати код</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="databaseDialog" class="dialog database-dialog">
+        <form id="databaseForm">
+            <div><h2 id="databaseDialogTitle">Редагування запису</h2><p class="muted">Зміни зберігаються після натискання «Зберегти».</p></div>
+            <div id="databaseFields" class="database-fields"></div>
+            <div id="databaseFormError" class="database-message error" role="alert"></div>
+            <div class="dialog-actions"><button id="databaseCancel" type="button">Скасувати</button><button id="databaseSave" type="submit">Зберегти</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="addBotDialog" class="dialog">
+        <form id="addBotForm" method="dialog">
+            <h2>Add bot</h2>
+
+            <label>
+                Name
+                <input id="newBotName" type="text" placeholder="Reseller">
+            </label>
+
+            <label>
+                Type
+                <select id="newBotType">
+                    <option value="test">test</option>
+                    <option value="afk">afk</option>
+                </select>
+            </label>
+
+            <label>
+                Account ID
+                <input id="newBotAccountId" type="number" min="1" placeholder="Optional">
+            </label>
+
+            <label>Server ID<input id="newBotServerId" type="number" min="1" required></label>
+            <label>Анархія<input id="newBotRealm" type="number" min="1" required></label>
+            <p class="muted">Торгівлю можна налаштувати в tasksData після створення бота.</p>
+            <div class="dialog-actions">
+                <button id="cancelAddBotButton" type="button">Cancel</button>
+                <button type="submit">Create</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+</body>
+</html>

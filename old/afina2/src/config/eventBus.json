@@ -1,0 +1,5 @@
+{
+    "logAllEvents": true,
+    "logAllSubscribes": true,
+    "logAllOneTimeEvents": true
+}

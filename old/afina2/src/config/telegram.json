@@ -1,0 +1,5 @@
+{
+  "operationTimeoutMs": 90000,
+  "requestTimeoutMs": 15000,
+  "authorizationTimeoutMs": 300000
+}

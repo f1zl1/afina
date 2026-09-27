@@ -1,0 +1,11 @@
+{
+    "databasePath": "src/data/afina.db",
+    "legacyPaths": {
+        "accountsPath": "src/data/accounts/accounts.db",
+        "botsPath": "src/data/bots/bots.db",
+        "tasksPath": "src/data/tasks/tasks.db",
+        "serversPath": "src/data/servers/servers.db",
+        "itemsPath": "src/data/items/items.db",
+        "resellerSettingsPath": "src/data/reseller/settings.db"
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test --test-isolation=none tests/*.test.js",
+    "test:ui": "node tests/browserSmoke.mjs",
+    "migration:check": "node scripts/checkMigration.mjs"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^18.0.0",
+    "flayercaptcha": "^1.0.6",
+    "minecraft-data": "^3.114.0",
+    "mineflayer": "^4.37.1",
+    "onnxruntime-node": "^1.27.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.35.3",
+    "teleproto": "1.229.0",
+    "ws": "^8.21.3",
+    "socks": "^2.8.10"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
+  }
+}
